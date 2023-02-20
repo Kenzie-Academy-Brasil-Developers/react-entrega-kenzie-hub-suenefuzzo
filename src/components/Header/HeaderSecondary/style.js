@@ -16,11 +16,19 @@ export const StyledHeaderSecondary = styled.header`
     }
   }
 
-  @media(min-width: 375px){
-    div{
-        max-width: 340px;
+  @media (min-width: 375px) {
+    div {
+      max-width: 340px;
     }
   }
+
+  @media (min-width: 768px) {
+    div {
+      width: 768px;
+     
+    }
+  }
+
 `;
 
 export const StyledRedirectLink = styled(Link)`
@@ -38,7 +46,7 @@ export const StyledRedirectLink = styled(Link)`
   font-weight: var(--font-weight-2);
   color: var(--grey-0);
 
-  :hover{
+  :hover {
     filter: brightness(0.9);
   }
 `;

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { HeaderSecondary } from "../../components/Header/HeaderSecondary";
+import { HeaderDashboard } from "../../components/Header/HeaderDashboard";
 import { StyledRedirectLink } from "../../components/Header/HeaderSecondary/style";
 import { Loading } from "../../components/Loading";
 import { api } from "../../services/api";
@@ -34,11 +34,12 @@ export const Dashboard = ({ user, setUser, loading, setLoading }) => {
 
   return (
     <>
-      <HeaderSecondary>
+      <HeaderDashboard>
         <StyledRedirectLink to="/" onClick={logOut}>
           Sair
         </StyledRedirectLink>
-      </HeaderSecondary>
+      </HeaderDashboard>
+
       <StyledMainDashboard>
         {loading ? (
           <Loading />
