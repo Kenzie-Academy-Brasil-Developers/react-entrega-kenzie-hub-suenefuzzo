@@ -15,17 +15,7 @@ export const StyledPinkButton = styled.button`
     :disabled{
         background-color: var(--color-primary-negative);
     }
-
-     /* altera a cor de fundo do botão quando os inputs estiverem preenchidos corretamente */
-    &[type="submit"]:not(:disabled):not(:hover):not(:focus) {
-        background-color: var(--color-primary);
-    }
-
-    /* altera a cor de fundo do botão quando os inputs estiverem preenchidos corretamente */
-    &:not(:disabled):not(:hover):not(:focus):active {
-        background-color: var(--color-primary);
-    }
-`
+`;
 
 export const StyledGreyButton = styled(StyledPinkButton)`
     background-color: var(--grey-1);
@@ -39,4 +29,4 @@ export const StyledDarkGreyButton =  styled(StyledPinkButton)`
     background-color: var(--grey-3);
     padding: 4px 25px;
     min-width: 84.09px;
-`
+`;

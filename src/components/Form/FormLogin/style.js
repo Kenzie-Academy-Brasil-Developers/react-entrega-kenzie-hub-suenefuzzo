@@ -80,6 +80,6 @@ export const StyledGreyLink = styled(Link)`
     :hover{
         background-color: var(--grey-2);
     }
-`
+`;
 
 

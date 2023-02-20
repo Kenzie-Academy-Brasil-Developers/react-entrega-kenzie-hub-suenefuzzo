@@ -4,14 +4,14 @@ import { HeaderSecondary } from "../../components/Header/HeaderSecondary";
 import { StyledRedirectLink } from "../../components/Header/HeaderSecondary/style";
 import { StyledMainRegister } from "./style";
 
-export const Register = ({setCourseModuleText}) => {
+export const Register = () => {
   return (
     <>
       <HeaderSecondary>
         <StyledRedirectLink to="/">Voltar</StyledRedirectLink>
       </HeaderSecondary>
       <StyledMainRegister>
-        <FormRegister setCourseModuleText={setCourseModuleText}/>
+        <FormRegister />
       </StyledMainRegister>
     </>
   );

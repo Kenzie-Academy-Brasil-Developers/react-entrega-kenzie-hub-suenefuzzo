@@ -71,28 +71,3 @@ export const StyledMainDashboard = styled.main`
     }
   }
 `;
-
-// export const StyledHeaderDashboard = styled.header`
-//   div {
-//     width: 92%;
-//     margin: 0 auto;
-//     display: flex;
-//     justify-content: space-between;
-//     align-items: flex-end;
-//     height: 113px;
-//     background-color: red;
-
-//     img {
-//       width: 97.59px;
-//       height: 16.9px;
-//     }
-//   }
-
-
-
-//   @media (min-width: 768px) {
-//     div {
-//       max-width: 768px;
-//     }
-//   }
-// `

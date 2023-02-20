@@ -25,10 +25,8 @@ export const StyledHeaderSecondary = styled.header`
   @media (min-width: 768px) {
     div {
       width: 768px;
-     
     }
   }
-
 `;
 
 export const StyledRedirectLink = styled(Link)`

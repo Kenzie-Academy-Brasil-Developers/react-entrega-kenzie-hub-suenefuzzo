@@ -5,5 +5,4 @@ export const StyledMain = styled.main`
         max-width: 369px;
         margin: 0 auto;
     }
-
-`
+`;

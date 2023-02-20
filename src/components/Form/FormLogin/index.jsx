@@ -8,10 +8,6 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { schema } from "./validations";
 import { StyledPinkButton } from "../../Button/style";
 
-//email: fulaninho@mail.com
-//senha: Fu*652145
-
-
 export const FormLogin = ({setUser}) => {
 
   const { register, handleSubmit, formState: { errors } } = useForm({

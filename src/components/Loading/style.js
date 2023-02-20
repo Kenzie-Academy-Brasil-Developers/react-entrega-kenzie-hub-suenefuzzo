@@ -5,6 +5,6 @@ export const StyledLoading = styled.p`
     font-weight: var(--font-weight-1);
     color: var(--grey-0);
     line-height: 1.75rem;
-`
+`;
 
 

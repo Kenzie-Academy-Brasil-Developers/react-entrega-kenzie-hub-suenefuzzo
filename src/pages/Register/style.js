@@ -22,4 +22,4 @@ export const StyledMainRegister = styled.main`
         max-width: 369px;
         margin: 0 auto;
     }
-`
+`;
