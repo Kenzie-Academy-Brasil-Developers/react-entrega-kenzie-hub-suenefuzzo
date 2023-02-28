@@ -1,13 +1,14 @@
 import { StyledPinkButton } from "../../Button/style";
 import { StyledFormRegister } from "./style";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
-import { api } from "../../../services/api";
-import { toast } from "react-toastify";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { schema } from "./validations";
+import { useContext } from "react";
+import { UserContext } from "../../../providers/UserContext";
 
 export const FormRegister = () => {
+  const {userRegister} = useContext(UserContext);
+
   const {
     register,
     handleSubmit,
@@ -16,21 +17,8 @@ export const FormRegister = () => {
     resolver: yupResolver(schema),
   });
 
-  const navigate = useNavigate();
-
-  const submitRegister = async (data) => {
-    try {
-      await api.post("/users", data);
-      toast.success("Usuário cadastrado com sucesso");
-      navigate("/");
-    } catch (error) {
-      console.error(error);
-      toast.error("Ops! Algo deu errado");
-    }
-  };
-
   return (
-    <StyledFormRegister onSubmit={handleSubmit(submitRegister)}>
+    <StyledFormRegister onSubmit={handleSubmit(userRegister)}>
       <h1>Crie sua conta</h1>
       <p>Rápido e grátis, vamos nessa</p>
       <fieldset>
@@ -104,11 +92,15 @@ export const FormRegister = () => {
           <option value="Primeiro módulo (Introdução ao Frontend)">
             Primeiro módulo (Introdução ao Frontend)
           </option>
-          <option value="Segundo módulo (Frontend Avançado)">Segundo módulo (Frontend Avançado)</option>
+          <option value="Segundo módulo (Frontend Avançado)">
+            Segundo módulo (Frontend Avançado)
+          </option>
           <option value="Terceiro módulo (Introdução ao Backend)">
             Terceiro módulo (Introdução ao Backend)
           </option>
-          <option value="Quarto módulo (Backend Avançado)">Quarto módulo (Backend Avançado)</option>
+          <option value="Quarto módulo (Backend Avançado)">
+            Quarto módulo (Backend Avançado)
+          </option>
         </select>
         <span>{errors.course_module?.message}</span>
       </fieldset>
@@ -116,5 +108,3 @@ export const FormRegister = () => {
     </StyledFormRegister>
   );
 };
-
-

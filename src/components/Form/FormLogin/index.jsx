@@ -1,36 +1,20 @@
-// import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { StyledFormLogin, StyledGreyLink } from "./style";
 import { useForm } from "react-hook-form";
-import { api } from "../../../services/api";
-import { toast } from "react-toastify";
 import { yupResolver } from '@hookform/resolvers/yup';
 import { schema } from "./validations";
 import { StyledPinkButton } from "../../Button/style";
+import { useContext } from "react";
+import { UserContext } from "../../../providers/UserContext";
 
-export const FormLogin = ({setUser}) => {
+export const FormLogin = () => {
+  const {userLogin} = useContext(UserContext);
 
   const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(schema)
   });
 
-  const navigate = useNavigate();
-
-  const submitLogin = async (data) => {
-    try {
-      const response = await api.post("/sessions", data);
-      localStorage.setItem("@TOKEN", response.data.token)
-      setUser(response.data.user)
-      toast.success("Login realizado com sucesso");
-      navigate("/dashboard");
-    } catch (error) {
-      console.error(error)
-      toast.error("Email ou senha incorretos");
-    }
-  };
-
   return (
-    <StyledFormLogin onSubmit={handleSubmit(submitLogin)}>
+    <StyledFormLogin onSubmit={handleSubmit(userLogin)}>
       <h1>Login</h1>
       <fieldset>
         <label htmlFor="email">Email</label>

@@ -1,41 +1,19 @@
-import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useContext } from "react";
 import { HeaderDashboard } from "../../components/Header/HeaderDashboard";
 import { StyledRedirectLink } from "../../components/Header/HeaderSecondary/style";
 import { Loading } from "../../components/Loading";
-import { api } from "../../services/api";
+import { UserContext } from "../../providers/UserContext";
 import { StyledMainDashboard } from "./style";
 
-export const Dashboard = ({ user, setUser, loading, setLoading }) => {
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    const loggedUser = async () => {
-      try {
-        setLoading(true);
-        const token = localStorage.getItem("@TOKEN");
-        api.defaults.headers.authorization = `Bearer ${token}`;
-        const response = await api.get("/profile");
-        setUser(response.data);
-      } catch (error) {
-        console.log(error);
-        navigate("/");
-      } finally {
-        setLoading(false);
-      }
-    };
-    loggedUser();
-  }, [setUser, navigate, setLoading]);
-
-  const logOut = () => {
-    localStorage.removeItem("@TOKEN");
-    navigate("/");
-  };
+export const Dashboard = () => {
+  const { user, userLogout, loading } = useContext(UserContext);
+  // console.log(user)
+  //requisição de busca de usuario com usuário
 
   return (
     <>
       <HeaderDashboard>
-        <StyledRedirectLink to="/" onClick={logOut}>
+        <StyledRedirectLink to="/" onClick={userLogout}>
           Sair
         </StyledRedirectLink>
       </HeaderDashboard>
@@ -47,14 +25,19 @@ export const Dashboard = ({ user, setUser, loading, setLoading }) => {
           <>
             <div className="container__userInfo">
               <section className="dashboard__userInfo">
-              <h1>Olá, {user.name}</h1>
-              <p>{user.course_module}</p>
-            </section>
+                <h1>Olá, {user.name}</h1>
+                <p>{user.course_module}</p>
+              </section>
             </div>
-            
+
             <section className="dashboard__warnings">
-              <p className="dashboard__message">Que pena! Estamos em desenvolvimento :(</p>
-              <span className="dashboard__news">Nossa aplicação está em desenvolvimento, em breve teremos novidades</span>
+              <p className="dashboard__message">
+                Que pena! Estamos em desenvolvimento :(
+              </p>
+              <span className="dashboard__news">
+                Nossa aplicação está em desenvolvimento, em breve teremos
+                novidades
+              </span>
             </section>
           </>
         )}
