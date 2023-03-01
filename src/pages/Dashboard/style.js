@@ -42,37 +42,23 @@ export const StyledMainDashboard = styled.main`
     flex-direction: column;
     gap: 23px;
     padding: 12px;
-
-    .dashboard__message {
-      font-size: 1.125rem;
-      font-weight: var(--font-weight-1);
-      color: var(--grey-0);
-      line-height: 1.75rem;
-    }
-
-    .dashboard__news {
-      font-size: var(--font-size-1);
-      font-weight: var(--font-weight-4);
-      color: #ffffff;
-      line-height: 1.5rem;
-    }
   }
 
-  .container__techs{
+  .container__techs {
     display: flex;
     justify-content: space-between;
     gap: 23px;
     padding: 12px;
     width: 100%;
 
-    h3{
+    h3 {
       font-size: 1.125rem;
       font-weight: var(--font-weight-1);
       color: var(--grey-0);
       line-height: 1.75rem;
     }
 
-    .button__addTech{
+    .button__addTech {
       width: 32px;
       height: 32px;
       font-size: 1.75rem;
@@ -84,9 +70,15 @@ export const StyledMainDashboard = styled.main`
     }
   }
 
-  .container__message{
+  .container__techsList {
+    background-color: var(--grey-3);
+    border-radius: var(--radius-2);
+    width: 95%;
+  }
+
+  .container__message {
     margin-top: 30px;
-    p{
+    p {
       color: var(--grey-0);
       font-size: var(--font-size-1);
       font-weight: var(--font-weight-2);
@@ -94,23 +86,27 @@ export const StyledMainDashboard = styled.main`
   }
 
   @media (min-width: 768px) {
-    .container__userInfo{
+    .container__userInfo {
       .dashboard__userInfo {
-      min-width: 769px;
-      margin: 0 auto;
-      flex-direction: row;
-      justify-content: space-between;
-    }
-    }
-    
-
-    .dashboard__warnings{
-      min-width: 769px;
-      margin: 0 auto;
-      
+        min-width: 769px;
+        margin: 0 auto;
+        flex-direction: row;
+        justify-content: space-between;
+      }
     }
 
-    .container__techs{
+    .dashboard__warnings {
+      min-width: 769px;
+      margin: 0 auto;
+    }
+
+    .container__techs {
+      max-width: 769px;
+      margin: 0 auto;
+    }
+
+    .container__techsList{
+      width: 98%;
       max-width: 769px;
       margin: 0 auto;
     }

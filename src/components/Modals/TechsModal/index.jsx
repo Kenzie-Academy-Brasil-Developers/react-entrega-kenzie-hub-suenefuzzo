@@ -7,7 +7,7 @@ import { StyledModalTechs } from "./style";
 import { schema } from "./validations";
 
 export const TechsModal = () => {
-  const { setAddModal } = useContext(TechsContext);
+  const { createTech, setAddModal } = useContext(TechsContext);
   const { register, handleSubmit } = useForm({
     resolver: yupResolver(schema),
   });
@@ -24,7 +24,7 @@ export const TechsModal = () => {
             X
           </button>
         </header>
-        <form>
+        <form onSubmit={handleSubmit(createTech)}>
           <fieldset>
             <label htmlFor="title">Nome</label>
             <input

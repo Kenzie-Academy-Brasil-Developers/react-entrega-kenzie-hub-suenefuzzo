@@ -18,7 +18,7 @@ export const TechsProvider = ({ children }) => {
             Authorization: `Bearer ${token}`,
           },
         });
-        // setUser(response.data);
+        setUser(response.data);
       } catch (error) {
         console.log(error);
       }
@@ -29,13 +29,13 @@ export const TechsProvider = ({ children }) => {
 
   const createTech = async (data) => {
     try {
-      const response = await api.post("/users/techs", data, {
+      await api.post("/users/techs", data, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
       toast.success("Nova tecnologia criada!");
-      console.log(response.data);
+      setAddModal(false)
     } catch (error) {
       console.log(error);
     }
