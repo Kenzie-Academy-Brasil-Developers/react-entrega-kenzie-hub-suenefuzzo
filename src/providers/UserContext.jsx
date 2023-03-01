@@ -7,8 +7,6 @@ export const UserContext = createContext({});
 
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState("");
-  // const [user, setUser] = useState(null);
-
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
@@ -54,7 +52,6 @@ export const UserProvider = ({ children }) => {
           navigate("/dashboard")
         } catch (error) {
           console.log(error);
-          navigate("/");
         } finally {
           setLoading(false);
         }

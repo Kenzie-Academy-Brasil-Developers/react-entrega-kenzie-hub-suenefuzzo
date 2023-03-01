@@ -58,16 +58,61 @@ export const StyledMainDashboard = styled.main`
     }
   }
 
+  .container__techs{
+    display: flex;
+    justify-content: space-between;
+    gap: 23px;
+    padding: 12px;
+    width: 100%;
+
+    h3{
+      font-size: 1.125rem;
+      font-weight: var(--font-weight-1);
+      color: var(--grey-0);
+      line-height: 1.75rem;
+    }
+
+    .button__addTech{
+      width: 32px;
+      height: 32px;
+      font-size: 1.75rem;
+      padding: 0;
+      border-radius: var(--radius-2);
+      border: none;
+      background-color: var(--grey-3);
+      color: var(--grey-0);
+    }
+  }
+
+  .container__message{
+    margin-top: 30px;
+    p{
+      color: var(--grey-0);
+      font-size: var(--font-size-1);
+      font-weight: var(--font-weight-2);
+    }
+  }
+
   @media (min-width: 768px) {
-    .dashboard__userInfo {
+    .container__userInfo{
+      .dashboard__userInfo {
       min-width: 769px;
       margin: 0 auto;
+      flex-direction: row;
+      justify-content: space-between;
     }
+    }
+    
 
     .dashboard__warnings{
       min-width: 769px;
       margin: 0 auto;
       
+    }
+
+    .container__techs{
+      max-width: 769px;
+      margin: 0 auto;
     }
   }
 `;

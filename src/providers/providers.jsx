@@ -1,10 +1,13 @@
 import React from "react";
+import { TechsProvider } from "./TechsContext";
 import { UserProvider } from "./UserContext";
 
 export const Providers = ({ children }) => {
   return (
     <UserProvider>
-      {children}
+      <TechsProvider>
+        {children}
+      </TechsProvider>
     </UserProvider>
-    );
+  );
 };
