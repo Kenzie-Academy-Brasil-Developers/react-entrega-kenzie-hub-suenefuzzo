@@ -4,13 +4,14 @@ import { HeaderDashboard } from "../../components/Header/HeaderDashboard";
 import { StyledRedirectLink } from "../../components/Header/HeaderSecondary/style";
 import { Loading } from "../../components/Loading";
 import { TechsModal } from "../../components/Modals/TechsModal";
+import { UpdateTechModal } from "../../components/Modals/UpdateTechModal";
 import { TechsContext } from "../../providers/TechsContext";
 import { UserContext } from "../../providers/UserContext";
 import { StyledMainDashboard } from "./style";
 
 export const Dashboard = () => {
   const { user, userLogout, loading } = useContext(UserContext);
-  const { addModal, setAddModal } = useContext(TechsContext);
+  const { addModal, setAddModal, updateModal } = useContext(TechsContext);
 
   return (
     <>
@@ -64,6 +65,7 @@ export const Dashboard = () => {
         )}
 
         {addModal ? <TechsModal /> : null}
+        {updateModal ? <UpdateTechModal /> : null}
       </StyledMainDashboard>
     </>
   );

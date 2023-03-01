@@ -9,6 +9,8 @@ export const TechsProvider = ({ children }) => {
   const token = localStorage.getItem("@TOKEN");
   const { setUser } = useContext(UserContext);
   const [addModal, setAddModal] = useState(false);
+  const [updateModal, setUpdateModal] = useState(false);
+  const [idTech, setIdTech] = useState("");
 
   useEffect(() => {
     const techsLoad = async () => {
@@ -49,6 +51,7 @@ export const TechsProvider = ({ children }) => {
         },
       });
       toast.success("Tecnologia atualizada");
+      setUpdateModal(false)
     } catch (error) {
       console.log(error);
     }
@@ -64,7 +67,7 @@ export const TechsProvider = ({ children }) => {
   };
 
   return (
-    <TechsContext.Provider value={{ createTech, updateTech, deleteTech, addModal, setAddModal }}>
+    <TechsContext.Provider value={{ createTech, updateTech, deleteTech, addModal, setAddModal, updateModal, setUpdateModal, idTech, setIdTech }}>
       {children}
     </TechsContext.Provider>
   );

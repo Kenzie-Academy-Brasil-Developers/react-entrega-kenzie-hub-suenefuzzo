@@ -9,6 +9,7 @@ export const StyledCard = styled.li`
     padding: 8px;
     border-radius: var(--radius-2);
     background-color: var(--grey-4);
+    cursor: pointer;
 
     h3{
         color: var(--grey-0);
