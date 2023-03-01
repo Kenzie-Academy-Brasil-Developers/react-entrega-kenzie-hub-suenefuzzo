@@ -2,6 +2,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { TechsContext } from "../../../providers/TechsContext";
+import { StyledPinkButton } from "../../Button/style";
+import { StyledModalTechs } from "./style";
 import { schema } from "./validations";
 
 export const TechsModal = () => {
@@ -11,7 +13,7 @@ export const TechsModal = () => {
   });
 
   return (
-    <div className="container__modal">
+    <StyledModalTechs className="container__modal">
       <div className="modal">
         <header>
           <h2>Cadastrar Tecnologia</h2>
@@ -41,9 +43,9 @@ export const TechsModal = () => {
               <option value="Avançado">Avançado</option>
             </select>
           </fieldset>
-          <button type="submit">Cadastrar Tecnologia</button>
+          <StyledPinkButton className="button__submit" type="submit">Cadastrar Tecnologia</StyledPinkButton>
         </form>
       </div>
-    </div>
+    </StyledModalTechs>
   );
 };
