@@ -6,8 +6,10 @@ import { api } from "../services/api";
 export const UserContext = createContext({});
 
 export const UserProvider = ({ children }) => {
-  const [user, setUser] = useState("");
+  const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [userState, setUserState] = useState(null);
+  const [userLevel, setUserLevel] = useState(null);
 
   const navigate = useNavigate();
 
@@ -26,6 +28,7 @@ export const UserProvider = ({ children }) => {
     try {
       const response = await api.post("/sessions", data);
       localStorage.setItem("@TOKEN", response.data.token);
+      localStorage.setItem("@USERID", response.data.user.id);
       setUser(response.data.user);
       toast.success("Login realizado com sucesso");
       navigate("/dashboard");
@@ -49,7 +52,7 @@ export const UserProvider = ({ children }) => {
             },
           });
           setUser(response.data);
-          navigate("/dashboard")
+          navigate("/dashboard");
         } catch (error) {
           console.log(error);
         } finally {
@@ -68,7 +71,18 @@ export const UserProvider = ({ children }) => {
 
   return (
     <UserContext.Provider
-      value={{ user, setUser, userRegister, userLogin, userLogout, loading }}
+      value={{
+        user,
+        setUser,
+        userRegister,
+        userLogin,
+        userLogout,
+        loading,
+        userState,
+        setUserState,
+        userLevel,
+        setUserLevel,
+      }}
     >
       {children}
     </UserContext.Provider>
