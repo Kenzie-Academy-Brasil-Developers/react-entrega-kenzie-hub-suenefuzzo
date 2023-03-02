@@ -1,21 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { TechsContext } from "../../../providers/TechsContext";
-import { UserContext } from "../../../providers/UserContext";
-import { StyledGreyButton, StyledPinkButton } from "../../Button/style";
+// import { UserContext } from "../../../providers/UserContext";
+// import { StyledGreyButton, StyledPinkButton } from "../../Button/style";
 import { StyledModalUpdate } from "./style";
 
 export const UpdateTechModal = () => {
   const { register, handleSubmit } = useForm();
 
-  const { setUpdateModal, idTech, deleteTech, updateTech, userState, userLevel } = useContext(TechsContext);
-  const { user } = useContext(UserContext);
-
-  const [techId, setTechId] = useState(null);
-  useEffect(() => {
-    setTechId(user.techs.map((tech) => tech.id));
-  }, [user]);
+  const { setUpdateModal, techId, deleteTech, updateTech, userState, userLevel } = useContext(TechsContext);
+  
+  
 
   return (
      
@@ -53,7 +49,7 @@ export const UpdateTechModal = () => {
           </fieldset>
           <div className="container__buttons">
             {/* <StyledPinkButton id={idTech} type="submit">Salvar alterações</StyledPinkButton> */}
-            <button id={idTech} type="submit">Salvar</button>
+            <button type="submit">Salvar</button>
             {/* <StyledGreyButton>Excluir</StyledGreyButton> */}
             <button type="button" onClick={() => deleteTech(techId)}>Excluir 2</button>
           </div>

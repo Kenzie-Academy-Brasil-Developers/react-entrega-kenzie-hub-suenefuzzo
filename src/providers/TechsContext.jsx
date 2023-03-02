@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useState } from "react";
 import { toast } from "react-toastify";
 import { api } from "../services/api";
 import { UserContext } from "./UserContext";
@@ -7,12 +7,16 @@ export const TechsContext = createContext({});
 
 export const TechsProvider = ({ children }) => {
   const token = localStorage.getItem("@TOKEN");
-  const idUser = localStorage.getItem("@USERID");
-  const { user, setUser } = useContext(UserContext);
+  // const idUser = localStorage.getItem("@USERID");
 
+  const { user, setUser } = useContext(UserContext);
   const [addModal, setAddModal] = useState(false);
   const [updateModal, setUpdateModal] = useState(false);
-  const [idTech, setIdTech] = useState("");
+  const [techId, setTechId] = useState(null);
+
+  
+    // setTechId(user.techs.map((tech) => tech.id));
+  
 
   const createTech = async (data) => {
     try {
@@ -42,16 +46,17 @@ export const TechsProvider = ({ children }) => {
     }
   };
 
-  const deleteTech = async (idTech) => {
+  const deleteTech = async (techId) => {
     try {
-      await api.delete(`/users/techs/${idTech}`, {
+      await api.delete(`/users/techs/${techId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-      const newList = user.techs.filter((tech) => tech.id !== idTech);
+      const newList = user.techs.filter((tech) => tech.id !== techId);
       setUser({...user, techs : [...newList]})
-      toast.success("Tecnologia removida!");
+      toast.warning("Tecnologia removida!");
+      setUpdateModal(false);
     } catch (error) {
       console.log(error);
     }
@@ -67,8 +72,8 @@ export const TechsProvider = ({ children }) => {
         setAddModal,
         updateModal,
         setUpdateModal,
-        idTech,
-        setIdTech,
+        techId,
+        setTechId,
       }}
     >
       {children}
