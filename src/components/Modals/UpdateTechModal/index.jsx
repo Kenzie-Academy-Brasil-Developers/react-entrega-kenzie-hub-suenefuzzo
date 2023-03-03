@@ -3,20 +3,26 @@ import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { TechsContext } from "../../../providers/TechsContext";
 // import { UserContext } from "../../../providers/UserContext";
-// import { StyledGreyButton, StyledPinkButton } from "../../Button/style";
+import { StyledGreyButton, StyledPinkButton } from "../../Button/style";
 import { StyledModalUpdate } from "./style";
 
 export const UpdateTechModal = () => {
   const { register, handleSubmit } = useForm();
+  const {
+    setUpdateModal,
+    techId,
+    deleteTech,
+    updateTech,
+    // userState,
+    techStatus,
+  } = useContext(TechsContext);
+  // const { user } = useContext(UserContext);
 
-  const { setUpdateModal, techId, deleteTech, updateTech, userState, userLevel } = useContext(TechsContext);
-  
-  
+  const onSubmit = () => {
+    updateTech();
+  };
 
   return (
-     
-
-
     <StyledModalUpdate className="container__modal">
       <div className="modal">
         <header>
@@ -28,30 +34,25 @@ export const UpdateTechModal = () => {
             X
           </button>
         </header>
-        <form onSubmit={handleSubmit(updateTech)}>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <fieldset>
             <label htmlFor="title">Nome do projeto</label>
-            <input
-              type="text"
-              name="title"
-              placeholder={userState}
-              disabled
-            />
+            <input type="text" name="title" placeholder="Título" disabled />
           </fieldset>
           <fieldset>
             <label htmlFor="status">Status</label>
             <select name="status" {...register("status")}>
-              <option value="">{userLevel}</option>
+              <option value="">{techStatus}</option>
               <option value="Iniciante">Iniciante</option>
               <option value="Intermediário">Intermediário</option>
               <option value="Avançado">Avançado</option>
             </select>
           </fieldset>
           <div className="container__buttons">
-            {/* <StyledPinkButton id={idTech} type="submit">Salvar alterações</StyledPinkButton> */}
-            <button type="submit">Salvar</button>
-            {/* <StyledGreyButton>Excluir</StyledGreyButton> */}
-            <button type="button" onClick={() => deleteTech(techId)}>Excluir 2</button>
+            <StyledPinkButton type="submit">Salvar alterações</StyledPinkButton>
+            <StyledGreyButton type="button" onClick={() => deleteTech(techId)}>
+              Excluir
+            </StyledGreyButton>
           </div>
         </form>
       </div>

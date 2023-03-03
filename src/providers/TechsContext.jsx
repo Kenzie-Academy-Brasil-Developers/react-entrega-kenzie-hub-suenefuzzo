@@ -7,16 +7,12 @@ export const TechsContext = createContext({});
 
 export const TechsProvider = ({ children }) => {
   const token = localStorage.getItem("@TOKEN");
-  // const idUser = localStorage.getItem("@USERID");
 
   const { user, setUser } = useContext(UserContext);
   const [addModal, setAddModal] = useState(false);
   const [updateModal, setUpdateModal] = useState(false);
   const [techId, setTechId] = useState(null);
-
-  
-    // setTechId(user.techs.map((tech) => tech.id));
-  
+  const [techStatus, setTechStatus] = useState(null);
 
   const createTech = async (data) => {
     try {
@@ -33,13 +29,16 @@ export const TechsProvider = ({ children }) => {
     }
   };
 
-  const updateTech = async (idTech, data) => {
+  const updateTech = async (techId, data) => {
     try {
-      await api.put(`/users/techs/${idTech}`, data, {
+      console.log(techId)
+      const response = await api.put(`/users/techs/${techId}`, data, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
+      console.log(response)
+      setUser({...user, tech: [response.data.status]})
       toast.success("Tecnologia atualizada");
     } catch (error) {
       console.log(error);
@@ -74,6 +73,8 @@ export const TechsProvider = ({ children }) => {
         setUpdateModal,
         techId,
         setTechId,
+        techStatus,
+        setTechStatus,
       }}
     >
       {children}

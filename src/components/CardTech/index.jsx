@@ -4,11 +4,13 @@ import { TechsContext } from "../../providers/TechsContext";
 import { StyledCard } from "./style";
 
 export const CardTech = ({id, title, status}) => {
-  const {setTechId, setUpdateModal} = useContext(TechsContext)
+  const {setTechId, setTechStatus, setUpdateModal} = useContext(TechsContext)
 
+ 
   const submit = () => {
     setTechId(id)
     setUpdateModal(true)
+    setTechStatus(status)
   };
 
   return (
